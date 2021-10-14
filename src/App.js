@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { DatatableContextProvider } from "./contexts/DatatableContext";
 import AppRoutes from "./routes"
 
 const App = () => {
   return (
+    <DatatableContextProvider>
     <Router>
       <Switch>
 
@@ -21,6 +23,7 @@ const App = () => {
       })}
       </Switch>
     </Router>
+    </DatatableContextProvider>
   )
 }
 
