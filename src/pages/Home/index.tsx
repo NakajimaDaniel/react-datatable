@@ -1,5 +1,6 @@
 
 import Header from '../../components/Header';
+import { ServerList } from '../../components/ServerList';
 import { Summary } from '../../components/Summary';
 
 function Home() {
@@ -7,6 +8,7 @@ function Home() {
     <>
       <Header />
       <Summary />
+      <ServerList/>
     </>
   );
 }

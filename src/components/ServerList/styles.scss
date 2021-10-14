@@ -1,0 +1,53 @@
+.serverListContainer {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+
+.serverListWrapper {
+  margin-top: 0px;
+  border: 1px solid #B7B7B7;
+  border-radius: 20px;
+
+  h1 {
+    margin-top: 0px;
+    background-color: #F0F0F0;  
+    padding: 1rem;
+    border-radius: 20px 20px 0 0;
+  }
+
+}
+
+.serverListDataTable {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+
+  table {
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    border-collapse: collapse;
+
+    thead {
+      tr {
+        th {
+          border: 1px solid #DDDDDD;
+          background: #F0F0F0;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          text-align: center;
+          height: 3rem;
+          border: 1px solid #DDDDDD;
+        }
+      }
+    }
+
+  }
+}
