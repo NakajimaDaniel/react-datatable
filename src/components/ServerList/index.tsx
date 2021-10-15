@@ -1,6 +1,10 @@
+import { useDatatable } from '../../contexts/DatatableContext';
 import './styles.scss';
 
 export function ServerList() {
+
+  const { serverData } = useDatatable();
+
   return (
     <div className="serverListContainer">
     <div className="serverListWrapper">
@@ -20,14 +24,16 @@ export function ServerList() {
           </thead>
 
           <tbody>
-            <tr>
-              <td><input type="radio"/></td>
-              <td>Server 1</td>
-              <td>10 GB</td>
-              <td>4 vCPUs</td>
-              <td>200 GB</td>
-              <td>10.0.0.1</td>
-            </tr>
+            {serverData.map(data => {return (
+              <tr key={data.id_vm}>
+                <td><input type="checkbox"/></td>
+                <td>{data.hostname}</td>
+                <td>{data.memory} GB</td>
+                <td>{data.CPU} vCPUs</td>
+                <td>{data.totalDiskGB} GB</td>
+                <td>{data.ip}</td>
+              </tr>
+            )})}
           </tbody>
 
         </table>

@@ -1,7 +1,6 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import  api  from '../services/api';
 
-const DatatableContext = createContext({});
 
 type DatatableContextProviderProps  = {
   children : ReactNode,
@@ -15,6 +14,13 @@ interface serverData {
   CPU: number;
   totalDiskGB: number;
 }
+
+type DatatableContextType = {
+  serverData: serverData[],
+}
+
+const DatatableContext = createContext({} as DatatableContextType);
+
 
 export function DatatableContextProvider({children} : DatatableContextProviderProps) {
 
@@ -45,12 +51,13 @@ export function DatatableContextProvider({children} : DatatableContextProviderPr
   },[]);
 
 
-  console.log(serverData);
 
 
   return (
-    <DatatableContext.Provider value="0">
+    <DatatableContext.Provider value={{serverData}}>
       {children}
     </DatatableContext.Provider>
   )
 }
+
+export const useDatatable = () => {return useContext(DatatableContext)}
