@@ -17,6 +17,8 @@ interface serverData {
 
 type DatatableContextType = {
   serverData: serverData[],
+  setSelectedServers: (data: serverData[]) => void,
+  selectedServers: serverData[],
 }
 
 const DatatableContext = createContext({} as DatatableContextType);
@@ -25,6 +27,9 @@ const DatatableContext = createContext({} as DatatableContextType);
 export function DatatableContextProvider({children} : DatatableContextProviderProps) {
 
   const [serverData, setServerData] = useState<serverData[]>([])
+
+  const [selectedServers, setSelectedServers] = useState<any[]>([]);
+
 
   useEffect(() => {
     async function getData() {
@@ -54,7 +59,7 @@ export function DatatableContextProvider({children} : DatatableContextProviderPr
 
 
   return (
-    <DatatableContext.Provider value={{serverData}}>
+    <DatatableContext.Provider value={{serverData, setSelectedServers, selectedServers}}>
       {children}
     </DatatableContext.Provider>
   )

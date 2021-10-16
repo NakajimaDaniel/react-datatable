@@ -1,9 +1,23 @@
+import { useEffect, useState } from 'react';
 import { useDatatable } from '../../contexts/DatatableContext';
 import './styles.scss';
 
+interface serverData {
+  id_vm: number;
+  ip: string;
+  hostname: string;
+  memory: number;
+  CPU: number;
+  totalDiskGB: number;
+}
+
 export function ServerList() {
 
-  const { serverData } = useDatatable();
+  const { serverData, setSelectedServers, selectedServers} = useDatatable();
+  // const [selectedServers, setSelectedServers] = useState<any[]>([]);
+  
+
+  console.log(selectedServers)
 
   return (
     <div className="serverListContainer">
@@ -26,7 +40,27 @@ export function ServerList() {
           <tbody>
             {serverData.map(data => {return (
               <tr key={data.id_vm}>
-                <td><input type="checkbox"/></td>
+                <td><input type="checkbox" onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedServers([
+                          ...selectedServers,
+                          {
+                            id_vm: data.id_vm,
+                            ip: data.ip,
+                            hostname: data.hostname,
+                            memory: data.memory,
+                            CPU: data.CPU,
+                            totalDiskGB: data.totalDiskGB,
+                          },
+                        ]);
+                      } else {
+                        setSelectedServers(
+                          selectedServers.filter((item) => item.id_vm !== data.id_vm),
+                        );
+                      }
+                    }}
+
+                /></td>
                 <td>{data.hostname}</td>
                 <td>{data.memory} GB</td>
                 <td>{data.CPU} vCPUs</td>
