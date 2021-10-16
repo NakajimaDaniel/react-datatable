@@ -17,8 +17,6 @@ export function ServerList() {
   // const [selectedServers, setSelectedServers] = useState<any[]>([]);
   
 
-  console.log(selectedServers)
-
   return (
     <div className="serverListContainer">
     <div className="serverListWrapper">
